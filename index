@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Click Me 😈</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        text-align: center;
+        margin-top: 20%;
+      }
+      a {
+        font-size: 2rem;
+        text-decoration: none;
+        color: red;
+        border: 2px solid red;
+        padding: 10px 20px;
+        border-radius: 8px;
+      }
+      @keyframes glitch {
+        0% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: translate(-52%, -48%) scale(1.05);
+          opacity: 0.6;
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#" id="yop-link">Click me 😈</a>
+
+    <script>
+      function triggerYopHack() {
+        // Style changes
+        document.body.style.background = "black";
+        document.body.style.color = "lime";
+        document.body.style.fontFamily = "monospace";
+        document.body.style.textShadow = "0 0 5px lime";
+
+        document.querySelectorAll("*").forEach((el) => {
+          el.style.background = "transparent";
+          el.style.border = "none";
+          el.style.color = "lime";
+        });
+
+        // Replace all text
+        function hackAllText(node) {
+          node.childNodes.forEach((child) => {
+            if (
+              child.nodeType === Node.TEXT_NODE &&
+              child.textContent.trim().length > 0
+            ) {
+              child.textContent = "HACKED BY YOP";
+            } else if (child.nodeType === Node.ELEMENT_NODE) {
+              hackAllText(child);
+            }
+          });
+        }
+        hackAllText(document.body);
+
+        // Glitch message
+        const glitch = document.createElement("div");
+        glitch.textContent = "💀 HACKED BY YOP 💀";
+        Object.assign(glitch.style, {
+          position: "fixed",
+          top: "40%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          fontSize: "3rem",
+          fontWeight: "bold",
+          color: "lime",
+          textShadow: "0 0 10px red, 0 0 20px red",
+          zIndex: 99999,
+          animation: "glitch 0.2s infinite",
+        });
+        document.body.appendChild(glitch);
+
+        // Alert message
+        setTimeout(() => {
+          alert("🧠 SYSTEM BREACH DETECTED: YOP IS IN CONTROL");
+        }, 1000);
+
+        // Optional: Redirect
+        setTimeout(() => {
+          window.location.href =
+            "https://codific.com/a-guide-on-how-to-not-get-hacked/";
+        }, 3000);
+      }
+
+      document
+        .getElementById("yop-link")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          triggerYopHack();
+        });
+    </script>
+  </body>
+</html>
